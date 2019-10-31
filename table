@@ -1,0 +1,7 @@
+create table alumnos(
+matricula int(10),	
+nombre varchar(128),
+licenciatura varchar(128),
+folio varchar(64),
+programa varchar(128)
+);

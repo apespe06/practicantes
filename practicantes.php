@@ -5,33 +5,40 @@
 	<title>Practicantes</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
+
+<header>
+	
+</header>
+
 <body>
 
 
-<div id="form">
+
 	<form action = "buscar.php" method = "POST" id="busca">
 	
-	Matricula:
-	<input id = "matricula" type = "text" name="matricula">
+	<p>Matricula:</p>
+	<input id="matricula" type="text" class="field" name="matricula">
 	<br><br>
 
-	Fecha de Inicio:
-	<input id = "inicio" type = "date" name = "inicio">
+	<p>Fecha de Inicio:</p>
+	<input id = "inicio" type = "date" class="field" name = "inicio">
 	<br><br>
 
-	Fecha de Finalizacion:
-	<input id = "fin" type = "date" name = "fin">
+	<p>Fecha de Finalizacion:</p>
+	<input id = "fin" type = "date" class="field" name = "fin">
 	<br><br>
 
-	Numero de hrs.:
-	<input type = "text" name="hrs" id="hrs">
+	<p>Numero de hrs.:</p>
+	<input type = "text" class="field" name="hrs" id="hrs">
 	<br><br>
 
-
-	<input type="submit" value="Búsqueda" name="crear" id="crear" />
+	<p class="center-content">
+	<input type="submit" value="Buscar" name="crear" id="crear" class="boton" />
+	</p>
 
     </form>
-  </div>
+
 
 
 

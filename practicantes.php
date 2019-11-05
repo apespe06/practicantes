@@ -3,11 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<title>Practicantes</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
 
-
+<div id="form">
 	<form action = "buscar.php" method = "POST" id="busca">
 	
 	Matricula:
@@ -29,7 +30,9 @@
 
 	<input type="submit" value="Búsqueda" name="crear" id="crear" />
 
-</form>
+    </form>
+  </div>
+
 
 
 	<script src="jqueryv3.4.1.js"></script>

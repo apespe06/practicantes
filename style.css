@@ -5,41 +5,56 @@
 }
 
 
-header{
+.header{
+		background-color: #142047;
+		color: white;
 		width: 100%;
-		height: 100px;
-		background-color: black;
-
+		height: 130px;
 }
 
-.container{
-	width: 85%;
-	max-width: 850px;
+.contenedor{
+	width: 80%;
+	max-width: 100%;
 	margin: 0 auto;
 }
 
+.logo-contenedor{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 
 body{
 	font-family: Arial;
-	background-color: rgb(214, 239, 255);
+	/*background-color: rgb(214, 239, 255);*/
+	background-color: white;
 	box-sizing: border-box;
 }
 
 
 form{
 	background: white;
-	border-radius: 3px;
+	border-style: solid;
+  	border-width: 2.5px;
+	border-radius: 8px;
+	border-color: #142047;
 	color: #999;
-	font-size: 1em;
+	font-size: 1.1em;
 	padding: 30px;
-	margin: 0 auto;
-	width: 500px;	
+	margin: 15px auto;
+	width: 500px;
+
 
 }
 
 input{
 	border: 0;
 	
+}
+
+h1{
+	text-align: center;
+	font-size: 1.8em;
 }
 
 

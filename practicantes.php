@@ -8,10 +8,22 @@
 
 
 <header class="header">
-	<div class="container">
+	<div class="contenedor logo-contenedor">
 		
-	</div>
-	
+			<a href="/">
+				<img src="img/logo1.png" width="110px" alt="Ubicar Logo">
+			</a>
+				
+			<h1>Facultad de Ciencias de la Computación</h1>
+			<h1>Practicas Profesionales</h1>
+				
+			<a href="/">
+				<img src="img/logo3.png" width="110px" alt="Ubicar Logo">
+			</a>
+			
+		
+			
+	</div>	
 </header>
 
 <body>
@@ -54,7 +66,7 @@
 			var horas = $('#hrs').val();
 
 			if (matricula == ""){
-				alert("Estas mal");
+				alert("Ingresa una matricula");
 				return false;			
 			}
 

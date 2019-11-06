@@ -12,6 +12,12 @@ header{
 
 }
 
+.container{
+	width: 85%;
+	max-width: 850px;
+	margin: 0 auto;
+}
+
 
 body{
 	font-family: Arial;

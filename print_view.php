@@ -1,21 +1,25 @@
+
 <!DOCTYPE HTML>
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
-		
+
 		<style type="text/css">
 
+
 			.presentacion{
-				margin-top: 150px;
+				margin-top: 100px;
 				margin-left: 150px;
 				font-size: 12px;
-				color: blue;
+				color: black;
+				
 				
 			}
 
 			.pre{
 				margin: 0 auto;
 				text-indent: 1cm;
+				
 			}
 
 			#uno{
@@ -23,7 +27,7 @@
 				margin-right: 30px;
 				margin-left: 150px;
 				font-size: 12px;
-				color: blue;
+				color: black;
 			}
 
 			#dos{
@@ -57,12 +61,7 @@
 
 			}		
 
-			 .espacio{
-					height:10px;
-					background-color: white;
-				}
-
-
+			
 		</style>
 
 	</head>
@@ -114,7 +113,6 @@
 					<td class="a">Nombre del alumno:</td>
 					<td class="b"><?php echo $nom; ?></td>
 				</tr>
-				<tr class="espacio"></tr>
 				<tr>
 					<td class="a">Matricula del alumno:</td>
 					<td class="b"><?php echo $matricula ?></td>

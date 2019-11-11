@@ -36,6 +36,14 @@
 	<input id="matricula" type="text" class="field" name="matricula">
 	<br><br>
 
+	<p>Licenciatura:</p>
+	<SELECT NAME="licenciatura" class="field">
+   		<OPTION VALUE="LICENCIATURA EN  INGENIERIA EN CIENCIAS DE LA COMPUTACIÓN">ICC
+   		<OPTION VALUE="LICENCIATURA EN INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN">ITI  
+   		<OPTION VALUE="LICENCIATURA EN CIENCIAS DE LA COMPUTACIÓN">LCC
+	</SELECT>
+	<br><br>
+
 	<p>Fecha de Inicio:</p>
 	<input id = "inicio" type = "date" class="field" name = "inicio">
 	<br><br>
@@ -60,6 +68,18 @@
 	<script src="jqueryv3.4.1.js"></script>
 
 	<script type="text/javascript">
+
+		restaFechas = function(f1,f2)
+		 {
+		 var aFecha1 = f1.split('-');
+		 var aFecha2 = f2.split('-');
+		 var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
+		 var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
+		 var dif = fFecha2 - fFecha1;
+		 var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+		 return dias;
+		 }
+
 		$(document).ready(function(){
 			$("#crear").click(function(){
 			var matricula = $('#matricula').val();
@@ -74,15 +94,22 @@
 				alert("Estas muy mal, no puedes terminar en menos de 250 hrs");
 				return false;
 			}
-		
-
-
-				//alert(matricula);
-		
+				//alert(matricula);		
 					
 			}); 
 
-		}); 		
+			$("#crear").click(function(){
+			var inicio = $('#inicio').val();
+			var fin = $('#fin').val();
+
+				alert(restaFechas(inicio,fin));	
+					
+			}); 
+
+
+
+
+		}); 			
 
 	</script>
 

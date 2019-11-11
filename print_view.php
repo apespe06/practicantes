@@ -70,6 +70,7 @@
 			<?php 
 			//var_dump($_POST); 
 			$matricula = $_REQUEST['matricula'];
+			$lic = $_REQUEST['licenciatura'];
 			$finicio = $_REQUEST['inicio'];
 			$ffin = $_REQUEST['fin'];
 			$hrs = $_REQUEST['hrs'];
@@ -92,12 +93,63 @@
 
 			mysqli_close($link);
 
+
+			function fecha($fecha){
+				$fechaComoEntero = strtotime($fecha);
+				$dia = date('d', $fechaComoEntero);
+				$mes =  date('m', $fechaComoEntero);
+				$año = date('Y', $fechaComoEntero);
+				switch ($mes) {
+					case '01':
+						$mes = 'ENERO';
+						break;
+					case '02':
+						$mes = 'FEBRERO';
+						break;
+					case '03':
+						$mes = 'MARZO';
+						break;
+					case '04':
+						$mes = 'ABRIL';
+						break;
+					case '05':
+						$mes = 'MAYO';
+						break;
+					case '06':
+						$mes = 'JUNIO';
+						break;
+					case '07':
+						$mes = 'JULIO';
+						break;
+					case '08':
+						$mes = 'AGOSTO';
+						break;
+					case '09':
+						$mes = 'SEPTIEMBRE';
+						break;
+					case '10':
+						$mes = 'OCTUBRE';
+						break;
+					case '11':
+						$mes = 'NOVIEMBRE';
+						break;
+					case '12':
+						$mes = 'DICIEMBRE';
+						break;
+						
+					
+				}
+
+				$fecha = $dia.' DE '.$mes.' DE '.$año ;
+				return $fecha;
+			}
+
 			?>
 
 		
 		<div class="presentacion">
-			<p class="pre">Dra. María del Carmen Lara Muñoz</p>
-			<p class="pre">Directora del Servicio Social</p>
+			<p class="pre">Mtro. Flavio Marcelino Guzmán Sánchez</p>
+			<p class="pre">Director del Servicio Social</p>
 			<p class="pre">B U A P </p>
 			<p class="pre">R E S E N T E</p>
 
@@ -119,7 +171,7 @@
 				</tr>
 				<tr>
 					<td class="a">Licenciatura:</td>
-					<td class="b"><?php echo $licenciatura ?></td>
+					<td class="b"><?php echo $lic ?></td>
 				</tr>
 				<tr>
 					<td class="a">Folio del programa en el que realizo la práctica profesional:</td>
@@ -127,11 +179,11 @@
 				</tr>
 				<tr>
 					<td class="a">Fecha de inicio de la práctica profesional:</td>
-					<td class="b"><?php echo $finicio ?></td>
+					<td class="b"><?php echo fecha($finicio) ?></td>
 				</tr>
 				<tr>
 					<td class="a">Fecha de término de la práctica profesional:</td>
-					<td class="b"><?php echo $ffin ?></td>
+					<td class="b"><?php echo fecha($ffin) ?></td>
 				</tr>
 				<tr>
 					<td class="a">Número de horas realizadas:</td>
@@ -149,7 +201,7 @@
 		<div class="presentacion">
 			<p class="pre">A T E N T A M E N T E </p>
 			<p class="pre">“PENSAR BIEN, PARA VIVIR MEJOR”</p>
-			<p class="pre">H. Puebla de Z., 25 de Abril de 2019</p>
+			<p class="pre">H. Puebla de Z., <?php date_default_timezone_set('UTC'); $hoy = date("Y-m-d");  echo fecha($hoy) ?></p>
 			
 		</div>
 

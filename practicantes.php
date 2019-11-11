@@ -36,14 +36,6 @@
 	<input id="matricula" type="text" class="field" name="matricula">
 	<br><br>
 
-	<p>Licenciatura:</p>
-	<SELECT NAME="licenciatura" class="field">
-   		<OPTION VALUE="LICENCIATURA EN  INGENIERIA EN CIENCIAS DE LA COMPUTACIÓN">ICC
-   		<OPTION VALUE="LICENCIATURA EN INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN">ITI  
-   		<OPTION VALUE="LICENCIATURA EN CIENCIAS DE LA COMPUTACIÓN">LCC
-	</SELECT>
-	<br><br>
-
 	<p>Fecha de Inicio:</p>
 	<input id = "inicio" type = "date" class="field" name = "inicio">
 	<br><br>
@@ -73,8 +65,8 @@
 		 {
 		 var aFecha1 = f1.split('-');
 		 var aFecha2 = f2.split('-');
-		 var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
-		 var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
+		 var fFecha1 = Date.UTC(aFecha1[0],aFecha1[1]-1,aFecha1[2]);
+		 var fFecha2 = Date.UTC(aFecha2[0],aFecha2[1]-1,aFecha2[2]);
 		 var dif = fFecha2 - fFecha1;
 		 var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
 		 return dias;
@@ -85,30 +77,31 @@
 			var matricula = $('#matricula').val();
 			var horas = $('#hrs').val();
 
+			var inicio = $('#inicio').val();
+			var fin = $('#fin').val();
+			var tiempo = restaFechas(inicio,fin);
+
 			if (matricula == ""){
 				alert("Ingresa una matricula");
 				return false;			
 			}
 
+			if (tiempo < 90){
+				alert("Estas super mal, no puedes terminar en " + tiempo + " dias es menor a 90 dias");
+				return false;
+			}	
+
 			if (horas < 250){
 				alert("Estas muy mal, no puedes terminar en menos de 250 hrs");
 				return false;
 			}
-				//alert(matricula);		
+				//alert(matricula);
+
+				
 					
 			}); 
 
-			$("#crear").click(function(){
-			var inicio = $('#inicio').val();
-			var fin = $('#fin').val();
-
-				alert(restaFechas(inicio,fin));	
-					
-			}); 
-
-
-
-
+	
 		}); 			
 
 	</script>

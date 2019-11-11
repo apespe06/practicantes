@@ -68,9 +68,9 @@
 
 	<body>
 			<?php 
+			header('Content-Type: text/html; charset=utf-8');
 			//var_dump($_POST); 
 			$matricula = $_REQUEST['matricula'];
-			$lic = $_REQUEST['licenciatura'];
 			$finicio = $_REQUEST['inicio'];
 			$ffin = $_REQUEST['fin'];
 			$hrs = $_REQUEST['hrs'];
@@ -79,8 +79,8 @@
 			$resultado=mysqli_query($link,"select * from alumnos where matricula = $matricula");
 			while($row=mysqli_fetch_array($resultado)){
 				$matricula = $row['matricula'];
-				$nom=$row['nombre'];
-				$licenciatura = $row['licenciatura'];
+				$nom = utf8_encode($row['nombre']);
+				$licenciatura = utf8_encode($row['licenciatura']);
 				$folio = $row['folio'];
 				$programa = $row['programa'];
 
@@ -93,6 +93,17 @@
 
 			mysqli_close($link);
 
+			if ($licenciatura == 'Ing Ciencias Computación(ICC)') 
+				$licenciatura = 'LICENCIATURA EN  INGENIERIA EN CIENCIAS DE LA COMPUTACIÓN';
+
+			if ($licenciatura == 'Ciencias de la Computación(CCO)') 
+				$licenciatura = 'LICENCIATURA EN CIENCIAS DE LA COMPUTACIÓN';
+
+			if ($licenciatura == 'Ing.Tec.de la Información (ITI)') 
+				$licenciatura = 'LICENCIATURA EN INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN';
+			
+
+
 
 			function fecha($fecha){
 				$fechaComoEntero = strtotime($fecha);
@@ -101,43 +112,29 @@
 				$año = date('Y', $fechaComoEntero);
 				switch ($mes) {
 					case '01':
-						$mes = 'ENERO';
-						break;
+						$mes = 'ENERO'; break;
 					case '02':
-						$mes = 'FEBRERO';
-						break;
+						$mes = 'FEBRERO'; break;
 					case '03':
-						$mes = 'MARZO';
-						break;
+						$mes = 'MARZO'; break;
 					case '04':
-						$mes = 'ABRIL';
-						break;
+						$mes = 'ABRIL'; break;
 					case '05':
-						$mes = 'MAYO';
-						break;
+						$mes = 'MAYO'; break;
 					case '06':
-						$mes = 'JUNIO';
-						break;
+						$mes = 'JUNIO'; break;
 					case '07':
-						$mes = 'JULIO';
-						break;
+						$mes = 'JULIO'; break;
 					case '08':
-						$mes = 'AGOSTO';
-						break;
+						$mes = 'AGOSTO'; break;
 					case '09':
-						$mes = 'SEPTIEMBRE';
-						break;
+						$mes = 'SEPTIEMBRE'; break;
 					case '10':
-						$mes = 'OCTUBRE';
-						break;
+						$mes = 'OCTUBRE'; break;
 					case '11':
-						$mes = 'NOVIEMBRE';
-						break;
+						$mes = 'NOVIEMBRE'; break;
 					case '12':
-						$mes = 'DICIEMBRE';
-						break;
-						
-					
+						$mes = 'DICIEMBRE'; break;					
 				}
 
 				$fecha = $dia.' DE '.$mes.' DE '.$año ;
@@ -171,7 +168,7 @@
 				</tr>
 				<tr>
 					<td class="a">Licenciatura:</td>
-					<td class="b"><?php echo $lic ?></td>
+					<td class="b"><?php echo $licenciatura ?></td>
 				</tr>
 				<tr>
 					<td class="a">Folio del programa en el que realizo la práctica profesional:</td>

@@ -29,7 +29,7 @@ ob_start();
 	$html2Pdf -> output();
 
 	
-	//$html2Pdf -> output('C:\wamp64\www\practicantes\ '.$nom.'.pdf','F');
+	$html2Pdf -> output('C:\wamp64\www\practicantes\ '.$nom.'.pdf','F');
 
 
 

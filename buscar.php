@@ -25,11 +25,14 @@ ob_start();
 	$html = ob_get_clean();
 
 	$html2Pdf = new Html2Pdf('P','LETTER','es','true','UTF-8');
+
+	$html2Pdf->addFont("letra", "", "letra");
+	$html2Pdf->addFont("letran", "", "letran");
 	$html2Pdf -> writeHTML($html);
 	$html2Pdf -> output();
 
 	
-	$html2Pdf -> output('C:\wamp64\www\practicantes\ '.$nom.'.pdf','F');
+	$html2Pdf -> output('C:\wamp64\www\practicantes\ '.$matricula.'.pdf','F');
 
 
 

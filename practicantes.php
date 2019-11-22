@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Practicantes</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 
@@ -28,10 +29,8 @@
 
 <body>
 
-
-
-	<form action = "buscar.php" method = "POST" id="busca">
-	
+	<form action = "buscar.php" method="POST">
+	<div class = "letrero" id="resultado"></div>
 	<p>Matricula:</p>
 	<input id="matricula" type="text" class="field" name="matricula">
 	<br><br>
@@ -49,7 +48,13 @@
 	<br><br>
 
 	<p class="center-content">
-	<input type="submit" value="Buscar" name="crear" id="crear" class="boton" />
+	<input type="submit" value="Crea pdf" name="crear" id="crear" class="boton" />
+	</p>
+
+	<p class="center-content">
+	
+	<br>
+	<input type="button" value="Buscar" name="busqueda" id="busqueda" class="boton"/>
 	</p>
 
     </form>
@@ -57,9 +62,22 @@
 
 
 
-	<script src="jqueryv3.4.1.js"></script>
+	<script src="jqueryv3.4.1.js"></script>	
+	<script type="text/javascript">		 
 
-	<script type="text/javascript">
+		$("#busqueda").click(function(){
+			var matricula = $('#matricula').val();
+			
+		$.post("prueba.php", {
+            matricula: matricula
+          }, function(data, textStatus){
+             
+             console.log(data);
+             alert(data);
+          
+          });
+        });
+
 
 		restaFechas = function(f1,f2)
 		 {
@@ -72,8 +90,39 @@
 		 return dias;
 		 }
 
-		$(document).ready(function(){
-			$("#crear").click(function(){
+	 $(document).ready(function(){
+                         
+      var consulta;             
+      //hacemos focus
+      $("#matricula").focus();                                                 
+      //comprobamos si se pulsa una tecla
+      $("#matricula").keyup(function(e){
+             //obtenemos el texto introducido en el campo
+             consulta = $("#matricula").val();                                      
+             //hace la búsqueda
+             $("#resultado").delay(1000).queue(function(n) {      
+                                           
+                 // $("#resultado").html('<img src="ajax-loader.gif" />');
+                                           
+                        $.ajax({
+                              type: "POST",
+                              url: "existe.php",
+                              data: "b="+consulta,
+                              dataType: "html",
+                              error: function(){
+                                    alert("error petición ajax");
+                              },
+                              success: function(data){                                                      
+                                    $("#resultado").html(data);
+                                    n();
+                              }
+                  });
+                                           
+             });
+                                
+      });
+
+		$("#crear").click(function(){
 			var matricula = $('#matricula').val();
 			var horas = $('#hrs').val();
 
@@ -81,8 +130,9 @@
 			var fin = $('#fin').val();
 			var tiempo = restaFechas(inicio,fin);
 
+
 			if (matricula == ""){
-				alert("Ingresa una matricula");
+				alert("Ingresa una matricula");		
 				return false;			
 			}
 
@@ -95,14 +145,14 @@
 				alert("Estas muy mal, no puedes terminar en menos de 250 hrs");
 				return false;
 			}
-				//alert(matricula);
-
-				
+			
 					
 			}); 
-
+                          
+		});//ready				
 	
-		}); 			
+		
+	
 
 	</script>
 

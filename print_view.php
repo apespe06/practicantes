@@ -10,19 +10,30 @@
 			.presentacion{
 				margin-top: 100px;
 				margin-left: 150px;
-				font-size: 12px;
-				color: black;
+				font-size: 11px;
+				font-family: letran;
+				color: black;				
 				
+			}
+
+			.presentacion2{
+				margin-top: 100px;
+				margin-left: 150px;
+				font-size: 11px;
+				font-family: letra;
+				color: black;				
 				
 			}
 
 			.pre{
 				margin: 0 auto;
 				text-indent: 1cm;
+				margin-bottom: 6px;
 				
 			}
 
 			#uno{
+				width: 77%;
 				padding: 60px
 				margin-right: 30px;
 				margin-left: 150px;
@@ -32,13 +43,20 @@
 
 			#dos{
 				text-indent: 50px;
+				font-family: letra;
+
+			}
+
+			span{
+			
+				font-family: letran;
 			}
 
 			.datos{
 				margin-right: 30px;
 				margin-left: 150px;
 				font-size: 11px;
-
+				font-family: letran;
 				border-collapse: collapse;
   				
 			}
@@ -56,14 +74,12 @@
 				padding: 7px;
 
 				border-bottom: 4px solid white;
-  				background-color: #A6ABAB;
-				
+  				background-color: #A6ABAB;				
 
 			}		
 
 			
 		</style>
-
 	</head>
 
 	<body>
@@ -91,7 +107,7 @@
 				//echo "<br>Programa: $programa<br><br>";
 			}	
 
-			mysqli_close($link);
+
 
 			if ($licenciatura == 'Ing Ciencias Computación(ICC)') 
 				$licenciatura = 'LICENCIATURA EN  INGENIERIA EN CIENCIAS DE LA COMPUTACIÓN';
@@ -141,6 +157,10 @@
 				return $fecha;
 			}
 
+			$resultado=mysqli_query($link,"delete from alumnos where matricula = $matricula");
+
+			mysqli_close($link);
+
 			?>
 
 		
@@ -153,7 +173,7 @@
 		</div>
 
 		<div id="uno">
-			<p id="dos">Por medio de la presente, nos permitimos hacer constar que el (la) estudiante, cuyos generales se enlistan, cumplió satisfactoriamente su practica profesional con base en la normatividad vigente.</p>
+			<p id="dos">Por medio de la presente, nos permitimos hacer constar que el (la) estudiante, cuyos generales se enlistan, cumplió satisfactoriamente su <span>practica profesional</span> con base en la normatividad vigente.</p>
 		</div>
 
 		<div>			
@@ -195,14 +215,14 @@
 			<p id="dos">Sin más por agregar, reiteramos la seguridad de nuestra atenta y distinguida consideración.</p>
 		</div>
 
-		<div class="presentacion">
+		<div class="presentacion2">
 			<p class="pre">A T E N T A M E N T E </p>
 			<p class="pre">“PENSAR BIEN, PARA VIVIR MEJOR”</p>
 			<p class="pre">H. Puebla de Z., <?php date_default_timezone_set('UTC'); $hoy = date("Y-m-d");  echo fecha($hoy) ?></p>
 			
 		</div>
 
-		<div class="presentacion">
+		<div class="presentacion2">
 			<p class="pre">M.C. Carlos Zamora Lima</p>
 			<p class="pre">Coordinador de Práctica Profesional</p>
 			<p class="pre">Facultad de Ciencias de la Computación</p>
